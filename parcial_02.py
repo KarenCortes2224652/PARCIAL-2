@@ -2,16 +2,22 @@
 
 from tkinter import *
 from tkinter import messagebox
-
-# Funciones de la app
-
-def Matriz():
-    z = int(x.get())
-    M= int(300+(z-3)*50)
-    if M>3:
-        t_resultados.insert(INSERT, "Valor a pagar: "+str(M)+"\n")
-    else:
-        t_resultados.insert(INSERT, "Valor a pagar: $300""\n")
+import numpy as np
+import random
+import random
+def MatrizAleatoria(n):
+    matriz = []
+    #Inicializar la matriz
+    for i in range(n):
+        a = [0]*n
+        matriz.append(a)
+    #Agregar elemtnos aleatorios a la matriz
+    for fila in range(n):
+        for columna in range(n):
+            elmto = random.randint(0,10)
+            matriz[fila][columna]=elmto
+            matriz[columna][fila]=elmto
+    return matriz
 
 def Borrar():
     messagebox.showinfo("Suma 1.0", "Los datos serán borrados...")
@@ -70,13 +76,13 @@ lb_x.config(bg="orchid2", fg="black", font=("Times New Roman",16))
 lb_x.place(x=10, y=100, width=150, height=30)
 
 # Entry para Buscar
-entry_x = Entry(frame_entrada, textvariable=x)
-entry_x.config(font=("Times New Roman",25), justify=LEFT,fg="black")
-entry_x.focus_set()
-entry_x.place(x=165, y=100, width=115, height=30)
+entry_y = Entry(frame_entrada, textvariable=x)
+entry_y.config(font=("Times New Roman",25), justify=LEFT,fg="black")
+entry_y.focus_set()
+entry_y.place(x=165, y=100, width=115, height=30)
 
 # Botón para sumar
-bt_tiempo = Button(frame_entrada, text="CREAR MATRIZ", command=Matriz)
+bt_tiempo = Button(frame_entrada, text="CREAR MATRIZ", command=MatrizAleatoria)
 bt_tiempo.place(x=45, y=150, width=100, height=30)
 
 # Botón borrar
@@ -105,4 +111,16 @@ t_resultados = Text(frame_resultados)
 t_resultados.config(bg="SlateGray1", fg="black", font=("Arial",20))
 t_resultados.place(x=10,y=10, width=460, height= 210)
 
+
+t_resultados = Text(frame_resultados)
+t_resultados.config(bg="yellow", fg="black", font=("Arial",20))
+t_resultados.place(x=100,y=10, width=70, height= 70)
+
+t_resultados = Text(frame_resultados)
+t_resultados.config(bg="yellow", fg="black", font=("Arial",20))
+t_resultados.place(x=220,y=10, width=70, height= 70)
+
+t_resultados = Text(frame_resultados)
+t_resultados.config(bg="yellow", fg="black", font=("Arial",20))
+t_resultados.place(x=320,y=10, width=70, height= 70)
 ventana_principal.mainloop()
